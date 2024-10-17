@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body
+		{
+			margin: 0;
+			background-color: snow;
+			font-family: sans-serif;
+
+			display: flex;
+		}
+
+		figure
+		{
+			display: none;
+		}
+
+		#tags:has(#objet:checked) + #docs .objet,
+		#tags:has(#graine:checked) + #docs .graine,
+		#tags:has(#alimentation:checked) + #docs .alimentation,
+		#tags:has(#speculatif:checked) + #docs .speculatif,
+		#tags:has(#lieu:checked) + #docs .lieu,
+		#tags:has(#sol:checked) + #docs .sol,
+		#tags:has(#toit:checked) + #docs .toit,
+		#tags:has(#vulgarisation:checked) + #docs .vulgarisation
+		{ display: block }
+
+		#tags
+		{
+			margin: 5vw;
+		}
+
+		input
+		{
+			display: none;
+		}
+
+		label
+		{
+			color: grey;
+			display: block;
+			margin: 10px;
+
+			user-select: none;
+		}
+
+		input:checked + label
+		{
+			color: black;
+		}
+
+		figure img
+		{
+			display: none;
+			position: fixed;
+			height: 100%;
+			top: 0;
+			left: 50%;
+			translate: -50%;
+		}
+
+		figure:target img
+		{
+			display: block;
+		}
+
+		#retour
+		{
+			display: none;
+
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+		}
+
+		#docs:has(figure:target) + #retour /* #retour:has(+ #tags + #docs figure:target) */
+		{
+			display: block;
+		}
+
+		#docs figure
+		{
+			margin: 10px;
+		}
+
+		#docs figure a
+		{
+			display: inline-block;
+			border: solid black 2px;
+			padding: 5px;
+			border-radius: 5px;
+			text-decoration: none;
+			color: black;
+
+			user-select: none;
+		}
+
+		#docs figure:target a
+		{
+			text-decoration: none;
+			color: white;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="tags">
+		<input type="checkbox" id="objet" /><label for="objet">Objets</label>
+    	<input type="checkbox" id="graine" /><label for="graine">Graines</label>
+    	<input type="checkbox" id="alimentation" /><label for="alimentation">Alimentation</label>
+    	<input type="checkbox" id="speculatif" /><label for="speculatif">Spéculatif</label>
+    	<input type="checkbox" id="lieu" /><label for="lieu">Lieu défini</label>
+    	<input type="checkbox" id="sol" /><label for="sol">Sol</label>
+    	<input type="checkbox" id="toit" /><label for="toit">Toit</label>
+    	<input type="checkbox" id="vulgarisation" /><label for="vulgarisation">Vulgarisation</label>
+	</div>
+	<div id="docs">
+		<figure id="bulbes" class="graine">
+			<img src="docs/bulbes.png"><a href="#bulbes"><figcaption>Des bulbes à tous les étages</figcaption></a>
+		</figure>
+		<figure id="ensemence" class="objet graine">
+			<img src="docs/ensemence.png"><a href="#ensemence"><figcaption>Papier ensemencé</figcaption></a>
+		</figure>
+		<figure id="grainotheque" class="graine">
+			<img src="docs/grainotheque.png"><a href="#grainotheque"><figcaption>Grainothèque</figcaption></a>
+		</figure>
+		<figure id="lombricomposteur" class="objet">
+			<img src="docs/lombricomposteur.png"><a href="#lombricomposteur"><figcaption>Lombricomposteur</figcaption></a>
+		</figure>
+		<figure id="milpa" class="objet alimentation">
+			<img src="docs/milpa.png"><a href="#milpa"><figcaption>Les trois sœurs (milpa)</figcaption></a>
+		</figure>
+		<figure id="stickbug" class="objet">
+			<img src="docs/stickbug.png"><a href="#stickbug"><figcaption>Stickbug</figcaption></a>
+		</figure>
+		<figure id="arbremaison" class="speculatif">
+			<img src="docs/arbremaison.png"><a href="#arbremaison"><figcaption>Arbre-maison</figcaption></a>
+		</figure>
+		<figure id="vaseterraformation" class="speculatif">
+			<img src="docs/vaseterraformation.png"><a href="#vaseterraformation"><figcaption>Vases et terraformation</figcaption></a>
+		</figure>
+		<figure id="towergarden" class="objet">
+			<img src="docs/towergarden.png"><a href="#towergarden"><figcaption>Tower-Garden</figcaption></a>
+		</figure>
+		<figure id="jardinscreoles" class="sol">
+			<img src="docs/jardinscreoles.png"><a href="#jardinscreoles"><figcaption>Jardins créoles</figcaption></a>
+		</figure>
+		<figure id="jardintierspaysage" class="lieu toit">
+			<img src="docs/jardintierspaysage.png"><a href="#jardintierspaysage"><figcaption>Jardins du Tiers Paysage</figcaption></a>
+		</figure>
+		<figure id="jardinssuspenduslabeaume" class="lieu">
+			<img src="docs/jardinssuspenduslabeaume.png"><a href="#jardinssuspenduslabeaume"><figcaption>Jardins suspendus de Labeaume</figcaption></a>
+		</figure>
+		<figure id="citytree" class="objet">
+			<img src="docs/citytree.png"><a href="#citytree"><figcaption>CityTree</figcaption></a>
+		</figure>
+		<figure id="sesame" class="vulgarisation">
+			<img src="docs/sesame.png"><a href="#sesame"><figcaption>Sésame</figcaption></a>
+		</figure>
+		<figure id="alusta" class="objet">
+			<img src="docs/alusta.png"><a href="#alusta"><figcaption>Alusta Pavilion</figcaption></a>
+		</figure>
+		<figure id="greencorridors" class="lieu">
+			<img src="docs/greencorridors.png"><a href="#greencorridors"><figcaption>Green Corridors</figcaption></a>
+		</figure>
+		<figure id="viaverde" class="lieu">
+			<img src="docs/viaverde.png"><a href="#viaverde"><figcaption>Via Verde Project</figcaption></a>
+		</figure>
+	</div>
+	<a id="retour" href="#"></a>
+</body>
+</html>
